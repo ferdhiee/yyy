@@ -1,0 +1,96 @@
+/* Tema: maaf ya piee (pink) */
+:root{
+	--pink:#ffc0cb;
+	--soft:#fff6fb;
+	--accent:#ff6fa3;
+	--text:#3b2b2b;
+}
+html,body{
+	height:100%;
+}
+body{
+	margin:0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	background: linear-gradient(180deg, var(--pink) 0%, #ffd9e6 100%);
+	color:var(--text);
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.card{
+	background:rgba(255,255,255,0.85);
+	padding:2.25rem;
+	border-radius:16px;
+	box-shadow:0 8px 30px rgba(0,0,0,0.12);
+	max-width:520px;
+	text-align:center;
+}
+h1{
+	margin:0 0 0.5rem 0;
+	font-size:2.25rem;
+	color:#7a2351;
+}
+.subtitle{
+	margin:0 0 1rem 0;
+	color:#7b3a4a;
+}
+button{ 
+	background:var(--accent);
+	border:0;
+	color:white;
+	padding:0.6rem 1rem;
+	border-radius:999px;
+	font-weight:600;
+	cursor:pointer;
+	box-shadow:0 6px 18px rgba(255,111,163,0.2);
+}
+button:active{transform:translateY(1px)}
+.note{margin-top:1rem;background:var(--soft);padding:1rem;border-radius:10px;border:1px solid rgba(0,0,0,0.04)}
+.hidden{display:none}
+
+/* Modal untuk tombol Keluar */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:9999}
+.modal-content{background:linear-gradient(180deg,#fff,#fffaf4);padding:1rem;border-radius:12px;max-width:90%;max-height:90%;box-shadow:0 12px 40px rgba(0,0,0,0.3);overflow:auto}
+.modal-body{display:flex;flex-direction:column;align-items:center;gap:0.75rem}
+.modal-body img{max-width:80vw;max-height:70vh;border-radius:8px}
+.modal-close{position:absolute;right:12px;top:10px;border:0;background:transparent;font-size:1.6rem;cursor:pointer;color:#7a2351}
+.missing{color:#7a2351;background:transparent}
+.exit{margin-left:0.5rem;background:#7a2351;color:white;padding:0.6rem 1rem;border-radius:999px;border:0}
+
+/* petals (rose explosion) */
+.petals-container{position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:10050;overflow:visible}
+
+.petal{position:absolute;display:inline-block;transform-origin:center center;will-change:transform,opacity;user-select:none}
+/* fancy wobble for petals */
+@keyframes petal-wobble{
+	0%{transform:rotate(0deg)}
+	50%{transform:rotate(18deg)}
+	100%{transform:rotate(0deg)}
+}
+@keyframes petal-fly{
+	0%{transform:translate(0,0) rotate(0deg) scale(1);opacity:1}
+	40%{opacity:1}
+ 100%{transform:translate(var(--tx), var(--ty)) rotate(var(--rot,720deg)) scale(0.78);opacity:0}
+}
+
+/* bloom overlay */
+.bloom-overlay{position:absolute;width:320px;height:320px;border-radius:50%;pointer-events:none;mix-blend-mode:screen;opacity:0.95;background:radial-gradient(circle at 50% 45%, rgba(255,240,240,0.95), rgba(255,200,220,0.85) 40%, rgba(255,200,200,0) 65%);animation:bloom-fade 520ms ease-out forwards}
+@keyframes bloom-fade{0%{transform:scale(0.6);opacity:0.95}100%{transform:scale(1.05);opacity:0}}
+
+/* sparkles */
+.spark{position:absolute;width:6px;height:6px;border-radius:50%;background:linear-gradient(180deg,#fff6f8,#ffd1df);box-shadow:0 2px 8px rgba(255,150,180,0.6);pointer-events:none;transform-origin:center}
+@keyframes spark-fly{
+	0%{transform:translate(0,0) scale(1);opacity:1}
+	100%{transform:translate(var(--tx), var(--ty)) scale(0.3);opacity:0}
+}
+
+/* camera shake */
+.shake{animation:camera-shake 420ms cubic-bezier(.2,.8,.2,.9)}
+@keyframes camera-shake{
+	0%{transform:translateY(0)}
+	20%{transform:translateY(-6px) rotate(-0.6deg)}
+	40%{transform:translateY(4px) rotate(0.4deg)}
+	60%{transform:translateY(-2px) rotate(-0.3deg)}
+	80%{transform:translateY(1px) rotate(0.2deg)}
+ 100%{transform:translateY(0) rotate(0)}
+}
